@@ -154,6 +154,7 @@ int play(char board[ROW][COL], int& hover, int& turn)
             return 1;
         default:
             Log("Invalid input. Please try again");
+            return 2;
     }
     return 0;
 }
