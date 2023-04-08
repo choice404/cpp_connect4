@@ -11,6 +11,7 @@ char checkWin(char[ROW][COL]);
 char win(char[ROW][COL], int&);
 bool checkLine(char, char, char, char);
 bool boardFilled(char[ROW][COL]);
+void clearScreen();
 
 int main() {
 
@@ -30,6 +31,7 @@ int main() {
     
     while(winner == '\0' && !boardFilled(board))
     {
+        clearScreen();
         printBoard(board, hover, turn);
         played = play(board, hover, turn);
         if(played == 1)
@@ -44,16 +46,23 @@ int main() {
         turn = turn * -1;
     }
 
+    clearScreen();
+
     if(winner == '\0')
     {
-        return 0;
+        return 1;
     }
 
     printBoard(board, hover, turn);
     Log(winner << " is the winner!");
-    
+
+    return 0;
 }
 
+void clearScreen()
+{
+    Log("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+}
 void printBoard(char board[ROW][COL], int& hover, int& turn)
 {
     std::string line =   "---------------------------------------------------------\n";
@@ -216,9 +225,6 @@ bool checkLine(char a, char b, char c, char d)
     }
     return false;
 }
-
-
-
 
 bool boardFilled(char board[ROW][COL])
 {
