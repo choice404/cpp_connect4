@@ -1,6 +1,7 @@
 #include <iostream>
 
 #define Log(x) (std::cout << x << std::endl)
+#define Clear() (system("clear"))
 
 const int ROW = 6, COL = 7;
 
@@ -11,7 +12,6 @@ char checkWin(char[ROW][COL]);
 char win(char[ROW][COL], int&);
 bool checkLine(char, char, char, char);
 bool boardFilled(char[ROW][COL]);
-void clearScreen();
 
 int main() {
 
@@ -31,7 +31,7 @@ int main() {
     
     while(winner == '\0' && !boardFilled(board))
     {
-        clearScreen();
+        Clear();
         printBoard(board, hover, turn);
         played = play(board, hover, turn);
         if(played == 1)
@@ -46,7 +46,7 @@ int main() {
         turn = turn * -1;
     }
 
-    clearScreen();
+    Clear();
 
     if(winner == '\0')
     {
@@ -59,10 +59,6 @@ int main() {
     return 0;
 }
 
-void clearScreen()
-{
-    Log("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-}
 void printBoard(char board[ROW][COL], int& hover, int& turn)
 {
     std::string line =   "---------------------------------------------------------\n";
